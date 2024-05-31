@@ -1,0 +1,132 @@
+<%- include('partials/header') %>
+
+<p>Hello</p>
+<p>Welcome to the home page.</p>
+<p>These are the routes</p>
+<table class="styled-table">
+  <thead>
+    <tr>
+      <th>S/N</th>
+      <th>Domain Name</th>
+      <th>Path + Query + Parameters</th>
+      <th>HTTP Method</th>
+      <th>Action</th>
+      <th>Routh Secured?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>http://localhost:7000</td>
+      <td>/</td>
+      <td>Get</td>
+      <td>Home</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>http://localhost:7000</td>
+      <td>/api/user</td>
+      <td>Post</td>
+      <td>Sign In</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>http://localhost:7000</td>
+      <td>/api/user/auth</td>
+      <td>Post</td>
+      <td>Register User</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>http://localhost:7000</td>
+      <td>/api/user/logout</td>
+      <td>Post</td>
+      <td>Logout User</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>http://localhost:7000</td>
+      <td>/api/user/profile</td>
+      <td>Get</td>
+      <td>Display User</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>http://localhost:7000</td>
+      <td>/api/user/profile</td>
+      <td>Put</td>
+      <td>Update User Info</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>http://localhost:7000</td>
+      <td>/api/blog/all</td>
+      <td>Get</td>
+      <td>Display All Blogs Created by Self</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>http://localhost:7000</td>
+      <td>/api/blog/all/:state</td>
+      <td>Get</td>
+      <td>Display Blogs Created by Self Using State</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>http://localhost:7000</td>
+      <td>/api/blog/published/items</td>
+      <td>Get</td>
+      <td>Display All Published Blogs</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>http://localhost:7000</td>
+      <td>/api/blog/item/:id</td>
+      <td>Get</td>
+      <td>Display Blog Created by Self Using ID</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>http://localhost:7000</td>
+      <td>/api/blog/published/item/:id"</td>
+      <td>Get</td>
+      <td>Display Published Blog by ID</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>http://localhost:7000</td>
+      <td>/api/blog</td>
+      <td>Post</td>
+      <td>Add Blog</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>http://localhost:7000</td>
+      <td>/api/blog/:id</td>
+      <td>Put</td>
+      <td>Update Blog</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>http://localhost:7000</td>
+      <td>/api/blog/:id</td>
+      <td>Put</td>
+      <td>Delete Blog</td>
+      <td>Yes</td>
+    </tr>
+  </tbody>
+</table>
+<%- include('partials/footer') %>

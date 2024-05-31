@@ -14,6 +14,9 @@ const app = express();
 
 ConnectToDb();
 
+app.set("view engine", "ejs");
+app.set("views", "views");
+
 app.use(
   cors({
     origin: ["http://localhost:5173"],
@@ -22,6 +25,7 @@ app.use(
   })
 );
 
+app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -34,8 +38,12 @@ app.use("/api/blog/published/item/:id", readCountMiddleware);
 app.use("/api/blog", blogRouter);
 app.use("/api/user", userRoutes);
 
+// app.get("/", (req, res) => {
+//   res.status(200).send("Home");
+// });
+
 app.get("/", (req, res) => {
-  res.status(200).send("Home");
+  res.render("index");
 });
 
 app.use(notFound);
