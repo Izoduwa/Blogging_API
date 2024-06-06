@@ -10,7 +10,7 @@ const AddBlogSchema = joi.object({
     .default("draft")
     .trim()
     .optional(),
-  read_count: joi.number().min(0).optional(),
+  read_count: joi.number().min(0).default(0).optional(),
   reading_time: joi.string().min(0).optional(),
   tags: joi.string().min(3).max(50).trim().optional(),
   body: joi.string().min(10).trim().required(),

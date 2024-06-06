@@ -22,6 +22,7 @@ const BlogSchema = new Schema(
     },
     read_count: {
       type: Number,
+      default: 0,
     },
     reading_time: {
       type: String,
