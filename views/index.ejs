@@ -1,13 +1,29 @@
 <%- include('partials/header') %>
 
-<p>Hello</p>
-<p>Welcome to the home page.</p>
+<h3>Introduction</h3>
+<p>
+  Welcome to the Blog API! This API allows users to sign up, manage their
+  accounts, and create, edit, and publish blog posts. The API supports two
+  states for blog posts: drafts and published. Draft posts are private and can
+  only be viewed by their creators, while published posts are public and can be
+  viewed by anyone.
+</p>
+
+<h3>Base URL</h3>
+<p>http://localhost:7000</p>
+
+<h3>Authentication</h3>
+<p>
+  All routes, except for user registration, login, published blogs routes and
+  the documentation route, require authentication via a token.
+</p>
+
 <p>These are the routes</p>
 <table class="styled-table">
   <thead>
     <tr>
       <th>S/N</th>
-      <th>Domain Name</th>
+      <th>Base URL</th>
       <th>Path + Query + Parameters</th>
       <th>HTTP Method</th>
       <th>Action</th>
@@ -20,7 +36,7 @@
       <td>http://localhost:7000</td>
       <td>/</td>
       <td>Get</td>
-      <td>Home</td>
+      <td>Documentation</td>
       <td>No</td>
     </tr>
     <tr>
@@ -129,4 +145,227 @@
     </tr>
   </tbody>
 </table>
+
+<h3>Endpoints</h3>
+<h4>User Routes</h4>
+
+<h5>Register a New User</h5>
+<ul>
+  <li>Endpoint: <strong>/api/user/auth</strong></li>
+  <li>Method: POST</li>
+  <li>Description: Register a new user</li>
+  <li>
+    <code
+      >Request Body: { "first_name": "string", "last_name": "string", "email":
+      "string", "password": "string" }</code
+    >
+  </li>
+  <li>
+    <code
+      >Response: { "first_name": "xxx", "last_name": "xxx", "email": "xxx"
+      }</code
+    >
+  </li>
+</ul>
+
+<h5>Login</h5>
+<ul>
+  <li>Endpoint: <strong>/api/user</strong></li>
+  <li>Method: POST</li>
+  <li>Description: Login a user and retrieve a token</li>
+  <li>
+    <code>Request Body: { "email": "string", "password": "string" }</code>
+  </li>
+  <li>
+    <code
+      >Response: { "first_name": "xxx", "last_name": "xxx", "email": "xxx", {
+      "token": "jwt_token" } }</code
+    >
+  </li>
+</ul>
+<h5>Logout</h5>
+<ul>
+  <li>Endpoint: <strong>/api/user/logout</strong></li>
+  <li>Method: POST</li>
+  <li>Description: Logout a user and delete the user's token</li>
+  <li><code>Request Body: { }</code></li>
+  <li><code>Response: { "message": "User logged out" }</code></li>
+</ul>
+
+<h5>Get User Profile</h5>
+<ul>
+  <li>Endpoint: <strong>/api/user/profile</strong></li>
+  <li>Method: GET</li>
+  <li>Description: Retrieve the logged-in user's profile</li>
+  <li>
+    <code
+      >Response: { "id": "user_id", "username": "string", "email": "string" } {
+      "user": { "\_id": "xxx", "first_name": "xxx", "last_name": "xxx", "email":
+      "xxx" } }</code
+    >
+  </li>
+</ul>
+
+<h5>Update User Profile</h5>
+<ul>
+  <li>Endpoint: <strong>/api/user/profile</strong></li>
+  <li>Method: PUT</li>
+  <li>Description: Update the logged-in user's profile</li>
+  <li>
+    <code
+      >Request Body: { "first_name": "string", "last_name": "string", "email":
+      "string", "password": "string" }</code
+    >
+  </li>
+  <li>
+    <code
+      >Response: { "\_id": "xxx", "first_name": "xxx", "last_name": "xxx",
+      "email": "xxx" }</code
+    >
+  </li>
+</ul>
+
+<h4>Blog Routes</h4>
+<h5>Get All Blogs</h5>
+<ul>
+  <li>Endpoint: <strong>/api/blog/all</strong></li>
+  <li>Method: GET</li>
+  <li>Description: Retrieve all blogs created by the authenticated user</li>
+  <li>
+    <code
+      >Response: [ { "_id": "blog_id", "title": "string", "state": "string",
+      "read_count": "integer" } ]</code
+    >
+  </li>
+</ul>
+
+<h5>Get All Blogs by State</h5>
+<ul>
+  <li>Endpoint: <strong>/api/blog/all/{state}</strong></li>
+  <li>Method: GET</li>
+  <li>
+    Description: Retrieve all blogs created by the authenticated user by State:
+    <strong>draft/published</strong>
+  </li>
+  <li>
+    <code
+      >Response: [ { "_id": "blog_id", "title": "string", "state": "string",
+      "read_count": "integer" } ]</code
+    >
+  </li>
+</ul>
+
+<h5>Get a Specific Blog Post</h5>
+<ul>
+  <li>Endpoint: <strong>/api/blog/item/{id}</strong></li>
+  <li>Method: GET</li>
+  <li>
+    Description: Retrieve a single blog created by the authenticated user by id
+  </li>
+  <li>
+    <code
+      >Response: { "\_id": "blog_id", "title": "string", "description":
+      "string", "author": "string", "state": "string", "read_count": "integer",
+      "reading_time": "string", "tags": "string", "body": "string", "userID":
+      "user_id", "createdAt": "datetime", "updatedAt": "datetime", "\_\_v": 0
+      }</code
+    >
+  </li>
+</ul>
+
+<h5>Get All Published Blogs</h5>
+<ul>
+  <li>Endpoint: <strong>/api/blog/published/items</strong></li>
+  <li>Method: GET</li>
+  <li>Description: Retrieve all published blogs</li>
+  <li>
+    <code
+      >Response: [ { "_id": "blog_id", "title": "string", "author": "string",
+      "read_count": "integer", "tags": "string", } ]</code
+    >
+  </li>
+</ul>
+
+<h5>Get a Specific Published Blog Post</h5>
+<ul>
+  <li>Endpoint: <strong>/api/blog/published/item/{id}</strong></li>
+  <li>Method: GET</li>
+  <li>Description: Retrieve a specific published blog post</li>
+  <li>
+    <code
+      >Response: { "\_id": "blog_id", "title": "string", "description":
+      "string", "author": "string", "state": "string", "read_count": "integer",
+      "reading_time": "string", "tags": "string", "body": "string", "userID":
+      "user_id", "createdAt": "datetime", "updatedAt": "datetime", "\_\_v": 0
+      }</code
+    >
+  </li>
+</ul>
+
+<h5>Create a New Blog Post</h5>
+<ul>
+  <li>Endpoint: <strong>/api/blog</strong></li>
+  <li>Method: POST</li>
+  <li>
+    Description: Create a new blog post (draft). NB: State is set to "draft" by
+    default but can be set to "published" if so desired
+  </li>
+  <li>
+    <code
+      >Request Body: { "title": "string", "description": "string", "tags":
+      "string", "body": "string" }</code
+    >
+  </li>
+  <li>
+    <code
+      >Response: { "\_id": "blog_id", "title": "string", "description":
+      "string", "author": "string", "state": "string", "read_count": "integer",
+      "reading_time": "string", "tags": "string", "body": "string", "userID":
+      "user_id", "createdAt": "datetime", "updatedAt": "datetime", "\_\_v": 0
+      }</code
+    >
+  </li>
+</ul>
+
+<h5>Update a Blog Post</h5>
+<ul>
+  <li>Endpoint: <strong>/api/blog/{id}</strong></li>
+  <li>Method: PUT</li>
+  <li>
+    Description: Update a blog post. Only the author can update their posts
+  </li>
+  <li>
+    <code
+      >Request Body: { "title": "string", "description": "string", "state":
+      "string", "tags": "string", "body": "string" }</code
+    >
+  </li>
+  <li>
+    <code
+      >Response: { "\_id": "blog_id", "title": "string", "description":
+      "string", "author": "string", "state": "string", "read_count": "integer",
+      "reading_time": "string", "tags": "string", "body": "string", "userID":
+      "user_id", "createdAt": "datetime", "updatedAt": "datetime", "\_\_v": 0
+      }</code
+    >
+  </li>
+</ul>
+
+<h5>Delete a Blog Post</h5>
+<ul>
+  <li>Endpoint: <strong>/api/blog/{id}</strong></li>
+  <li>Method: DELETE</li>
+  <li>
+    Description: Delete a blog post. Only the author can delete their posts
+  </li>
+  <li>
+    <code
+      >Response: { "\_id": "blog_id", "title": "string", "description":
+      "string", "author": "string", "state": "string", "read_count": "integer",
+      "reading_time": "string", "tags": "string", "body": "string", "userID":
+      "user_id", "createdAt": "datetime", "updatedAt": "datetime", "\_\_v": 0
+      }</code
+    >
+  </li>
+</ul>
 <%- include('partials/footer') %>
