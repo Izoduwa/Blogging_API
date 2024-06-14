@@ -132,7 +132,7 @@ All routes, except for user registration, login, published blogs routes and the 
 
 - Endpoint: **/api/blog/all/{state}**
 - Method: GET
-- Description: Retrieve all blogs created by the authenticated user by State: **draft/published**.
+- Description: Retrieve all blogs created by the authenticated user, filter with state: **draft/published**.
 - Response:
 
 [
@@ -171,6 +171,23 @@ All routes, except for user registration, login, published blogs routes and the 
 - Endpoint: **/api/blog/published/items**
 - Method: GET
 - Description: Retrieve all published blogs.
+- Response:
+
+[
+{
+"_id": "blog_id",
+"title": "string",
+"author": "string",
+"read_count": "integer",
+"tags": "string",
+}
+]
+
+###### Get All Published Blogs - Search by author, title or tags
+
+- Endpoint: **/api/blog/published/items/{fieldname}/{search_item}**
+- Method: GET
+- Description: Retrieve all published blogs by author, title or tags.
 - Response:
 
 [

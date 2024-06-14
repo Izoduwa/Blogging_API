@@ -84,7 +84,7 @@
       <td>http://localhost:7000</td>
       <td>/api/blog/all</td>
       <td>Get</td>
-      <td>Display All Blogs Created by Self</td>
+      <td>Display All Blogs Created by self</td>
       <td>Yes</td>
     </tr>
     <tr>
@@ -92,7 +92,7 @@
       <td>http://localhost:7000</td>
       <td>/api/blog/all/:state</td>
       <td>Get</td>
-      <td>Display Blogs Created by Self Using State</td>
+      <td>Display Blogs Created by self filter with state</td>
       <td>Yes</td>
     </tr>
     <tr>
@@ -106,13 +106,21 @@
     <tr>
       <td>10</td>
       <td>http://localhost:7000</td>
-      <td>/api/blog/item/:id</td>
+      <td>/api/blog/published/items/{fieldname}/{search_item}</td>
       <td>Get</td>
-      <td>Display Blog Created by Self Using ID</td>
-      <td>Yes</td>
+      <td>Get All Published Blogs - Search by author, title or tags</td>
+      <td>No</td>
     </tr>
     <tr>
       <td>11</td>
+      <td>http://localhost:7000</td>
+      <td>/api/blog/item/:id</td>
+      <td>Get</td>
+      <td>Display Blog Created by self - Search by ID</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>12</td>
       <td>http://localhost:7000</td>
       <td>/api/blog/published/item/:id"</td>
       <td>Get</td>
@@ -120,7 +128,7 @@
       <td>No</td>
     </tr>
     <tr>
-      <td>12</td>
+      <td>13</td>
       <td>http://localhost:7000</td>
       <td>/api/blog</td>
       <td>Post</td>
@@ -128,7 +136,7 @@
       <td>Yes</td>
     </tr>
     <tr>
-      <td>13</td>
+      <td>14</td>
       <td>http://localhost:7000</td>
       <td>/api/blog/:id</td>
       <td>Put</td>
@@ -136,7 +144,7 @@
       <td>Yes</td>
     </tr>
     <tr>
-      <td>14</td>
+      <td>15</td>
       <td>http://localhost:7000</td>
       <td>/api/blog/:id</td>
       <td>Put</td>
@@ -244,7 +252,8 @@
   <li>Endpoint: <strong>/api/blog/all/{state}</strong></li>
   <li>Method: GET</li>
   <li>
-    Description: Retrieve all blogs created by the authenticated user by State:
+    Description: Retrieve all blogs created by the authenticated user, filter
+    with state:
     <strong>draft/published</strong>
   </li>
   <li>
@@ -278,6 +287,22 @@
   <li>Endpoint: <strong>/api/blog/published/items</strong></li>
   <li>Method: GET</li>
   <li>Description: Retrieve all published blogs</li>
+  <li>
+    <code
+      >Response: [ { "_id": "blog_id", "title": "string", "author": "string",
+      "read_count": "integer", "tags": "string", } ]</code
+    >
+  </li>
+</ul>
+
+<h5>Get All Published Blogs - Search by author, title or tags</h5>
+<ul>
+  <li>
+    Endpoint:
+    <strong>/api/blog/published/items/{fieldname}/{search_item}</strong>
+  </li>
+  <li>Method: GET</li>
+  <li>Description: Retrieve all published blogs by author, title or tags</li>
   <li>
     <code
       >Response: [ { "_id": "blog_id", "title": "string", "author": "string",

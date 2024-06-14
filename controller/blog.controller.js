@@ -94,6 +94,53 @@ const getPublishedBlogItems = asyncHandler(async (req, res) => {
   });
 });
 
+// Kelly%20Izoduwa
+//http://[::1]:7000/api/blog/published/items/tags/Movies
+//http://[::1]:7000/api/blog/published/items/author/kelly izoduwa
+//http://[::1]:7000/api/blog/published/items/title/Moving train
+
+const getPublishedBlogItemsSearch = asyncHandler(async (req, res) => {
+  const searchparams = req.params.search_item;
+  const search = new RegExp(searchparams, "i");
+  const field = req.params.fieldname.toLowerCase();
+
+  const query = {
+    [field]: search,
+    state: "published",
+  };
+
+  const page = parseInt(req.query.page) || 1; // Current page number
+  const pageSize = 20; // Number of items per page
+
+  const totalCount = await blogModel.countDocuments();
+  const totalPages = Math.ceil(totalCount / pageSize);
+
+  let blog;
+
+  try {
+    blog = await blogModel
+      .find(query, {
+        _id: 1,
+        title: 1,
+        author: 1,
+        tags: 1,
+        read_count: 1,
+      })
+      .skip((page - 1) * pageSize)
+      .limit(pageSize);
+  } catch (error) {
+    res.status(404);
+    throw new Error("Blog item(s) not found");
+  }
+
+  res.json({
+    blog,
+    page,
+    totalPages,
+    totalCount,
+  });
+});
+
 const getBlogById = asyncHandler(async (req, res) => {
   const id = req.params.id;
   const blog = await blogModel.findById(id);
@@ -159,6 +206,7 @@ module.exports = {
   getAllBlogItems,
   getAllBlogItemsByStatus,
   getPublishedBlogItems,
+  getPublishedBlogItemsSearch,
   getBlogById,
   getPublishedBlogById,
   addBlogItem,
