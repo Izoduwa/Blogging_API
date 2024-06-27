@@ -82,13 +82,21 @@
     <tr>
       <td>7</td>
       <td>http://localhost:7000</td>
+      <td>/api/blog/item/:id</td>
+      <td>Get</td>
+      <td>Display Blog Created by self - Search by ID</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>http://localhost:7000</td>
       <td>/api/blog/all</td>
       <td>Get</td>
       <td>Display All Blogs Created by self</td>
       <td>Yes</td>
     </tr>
     <tr>
-      <td>8</td>
+      <td>9</td>
       <td>http://localhost:7000</td>
       <td>/api/blog/all/:state</td>
       <td>Get</td>
@@ -96,7 +104,7 @@
       <td>Yes</td>
     </tr>
     <tr>
-      <td>9</td>
+      <td>10</td>
       <td>http://localhost:7000</td>
       <td>/api/blog/published/items</td>
       <td>Get</td>
@@ -104,20 +112,12 @@
       <td>No</td>
     </tr>
     <tr>
-      <td>10</td>
-      <td>http://localhost:7000</td>
-      <td>/api/blog/published/items/{fieldname}/{search_item}</td>
-      <td>Get</td>
-      <td>Get All Published Blogs - Search by author, title or tags</td>
-      <td>No</td>
-    </tr>
-    <tr>
       <td>11</td>
       <td>http://localhost:7000</td>
-      <td>/api/blog/item/:id</td>
+      <td>/api/blog/published/items/{fieldname}/{fieldvalue}</td>
       <td>Get</td>
-      <td>Display Blog Created by self - Search by ID</td>
-      <td>Yes</td>
+      <td>Get All Published Blogs - Search by field: author, title or tags</td>
+      <td>No</td>
     </tr>
     <tr>
       <td>12</td>
@@ -170,8 +170,8 @@
   </li>
   <li>
     <code
-      >Response: { "first_name": "xxx", "last_name": "xxx", "email": "xxx"
-      }</code
+      >Response: { "_id": xxx, "first_name": "xxx", "last_name": "xxx", "email":
+      "xxx", { "token": "jwt_token" } }</code
     >
   </li>
 </ul>
@@ -186,8 +186,8 @@
   </li>
   <li>
     <code
-      >Response: { "first_name": "xxx", "last_name": "xxx", "email": "xxx", {
-      "token": "jwt_token" } }</code
+      >Response: { "message": "User logged in successfully", { "token":
+      "jwt_token" } }</code
     >
   </li>
 </ul>
@@ -205,11 +205,11 @@
   <li>Endpoint: <strong>/api/user/profile</strong></li>
   <li>Method: GET</li>
   <li>Description: Retrieve the logged-in user's profile</li>
+  <li><code>Request Body: { }</code></li>
   <li>
     <code
-      >Response: { "id": "user_id", "username": "string", "email": "string" } {
-      "user": { "\_id": "xxx", "first_name": "xxx", "last_name": "xxx", "email":
-      "xxx" } }</code
+      >Response: { "_id": "xxx", "first_name": "xxx", "last_name": "xxx",
+      "email": "xxx" }</code
     >
   </li>
 </ul>
@@ -224,11 +224,12 @@
       >Request Body: { "first_name": "string", "last_name": "string", "email":
       "string", "password": "string" }</code
     >
+    Enter the name(s) of the field(s) of interest and the new value(s) for
+    update
   </li>
   <li>
     <code
-      >Response: { "\_id": "xxx", "first_name": "xxx", "last_name": "xxx",
-      "email": "xxx" }</code
+      >Response: { "message": "User information updated successfully" }</code
     >
   </li>
 </ul>
@@ -299,10 +300,12 @@
 <ul>
   <li>
     Endpoint:
-    <strong>/api/blog/published/items/{fieldname}/{search_item}</strong>
+    <strong>/api/blog/published/items/{fieldname}/{fieldvalue}</strong>
   </li>
   <li>Method: GET</li>
-  <li>Description: Retrieve all published blogs by author, title or tags</li>
+  <li>
+    Description: Retrieve all published blogs by field: author, title or tags
+  </li>
   <li>
     <code
       >Response: [ { "_id": "blog_id", "title": "string", "author": "string",

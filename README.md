@@ -30,9 +30,13 @@ All routes, except for user registration, login, published blogs routes and the 
   }
 - Response:
   {
+  "\_id": xxx,
   "first_name": "xxx",
   "last_name": "xxx",
-  "email": "xxx"
+  "email": "xxx",
+  {
+  "token": "jwt_token"
+  }
   }
 
 ###### Login
@@ -47,9 +51,7 @@ All routes, except for user registration, login, published blogs routes and the 
   }
 - Response:
   {
-  "first_name": "xxx",
-  "last_name": "xxx",
-  "email": "xxx",
+  "message": "User logged in successfully",
   {
   "token": "jwt_token"
   }
@@ -61,10 +63,7 @@ All routes, except for user registration, login, published blogs routes and the 
 - Method: POST
 - Description: Logout a user and delete the user's token.
 - Request Body:
-  {
-
-}
-
+  { }
 - Response:
   {
   "message": "User logged out"
@@ -75,19 +74,14 @@ All routes, except for user registration, login, published blogs routes and the 
 - Endpoint: **/api/user/profile**
 - Method: GET
 - Description: Retrieve the logged-in user's profile.
+- Request Body:
+  { }
 - Response:
   {
-  "id": "user_id",
-  "username": "string",
-  "email": "string"
-  }
-  {
-  "user": {
   "\_id": "xxx",
   "first_name": "xxx",
   "last_name": "xxx",
   "email": "xxx"
-  }
   }
 
 ###### Update User Profile
@@ -101,13 +95,10 @@ All routes, except for user registration, login, published blogs routes and the 
   "last_name": "string",
   "email": "string",
   "password": "string"
-  }
+  }**Enter the name(s) of the field(s) of interest and the new value(s) for update**
 - Response:
   {
-  "\_id": "xxx",
-  "first_name": "xxx",
-  "last_name": "xxx",
-  "email": "xxx"
+  "message": "User information updated successfully"
   }
 
 #### Blog Routes
@@ -185,9 +176,9 @@ All routes, except for user registration, login, published blogs routes and the 
 
 ###### Get All Published Blogs - Search by author, title or tags
 
-- Endpoint: **/api/blog/published/items/{fieldname}/{search_item}**
+- Endpoint: **/api/blog/published/items/{fieldname}/{fieldvalue}**
 - Method: GET
-- Description: Retrieve all published blogs by author, title or tags.
+- Description: Retrieve all published blogs by field: author, title or tags.
 - Response:
 
 [
