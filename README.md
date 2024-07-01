@@ -6,7 +6,7 @@ Welcome to the Blog API! This API allows users to sign up, manage their accounts
 
 ### Base URL
 
-http://localhost:7000
+https://blogging-api-7w9w.onrender.com
 
 ### Authentication
 
