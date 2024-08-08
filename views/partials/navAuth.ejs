@@ -1,0 +1,19 @@
+<%- include('header') %>
+<nav class="nav">
+  <div class="nav-header">
+    <span class="nav-header-span">Blog API</span>
+  </div>
+  <div class="nav-link-container">
+    <form action="/home" method="POST">
+      <input type="hidden" name="email" value="<%= email %>" />
+      <button class="nav-btn-link">Home</button>
+    </form>
+    <a href="/documentation" class="nav-link"> Documentation </a>
+    <form action="/create/auth" method="POST">
+      <input type="hidden" name="author" value="<%= author %>" />
+      <input type="hidden" name="email" value="<%= email %>" />
+      <button class="nav-btn-link">Add Blog</button>
+    </form>
+    <a href="/login" class="nav-link"> Logout </a>
+  </div>
+</nav>

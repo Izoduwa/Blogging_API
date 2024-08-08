@@ -1,0 +1,41 @@
+<%- include('../partials/header') %> <%- include('../partials/nav') %>
+<h1 class="container heading">Login Page</h1>
+<div class="container height-full">
+  <div class="parent">
+    <div class="innerParent">
+      <h2 class="heading">Enter your details</h2>
+      <form action="/home/auth" method="POST">
+        <div class="mb-3">
+          <label htmlFor="email">
+            <strong>Email</strong>
+          </label>
+          <input
+            type="email"
+            name="email"
+            autocomplete="off"
+            placeholder="Enter Email"
+            class="inputs"
+          />
+        </div>
+        <div class="mb-3">
+          <label htmlFor="password">
+            <strong>Password</strong>
+          </label>
+          <input
+            type="password"
+            name="password"
+            autocomplete="off"
+            placeholder="Enter Password"
+            class="inputs"
+          />
+        </div>
+        <button class="btn">Login</button>
+        <div class="checkbox">
+          <input type="checkbox" />
+          <label htmlFor="checkbox">Agree with terms & conditions</label>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include('../partials/footer') %>

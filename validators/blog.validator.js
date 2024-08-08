@@ -12,7 +12,7 @@ const AddBlogSchema = joi.object({
     .optional(),
   read_count: joi.number().min(0).default(0).optional(),
   reading_time: joi.string().min(0).optional(),
-  tags: joi.string().min(3).max(50).trim().optional(),
+  tag: joi.string().min(3).max(50).trim().optional(),
   body: joi.string().min(10).trim().required(),
   userID: joi.string().trim().optional(),
 });
@@ -24,7 +24,7 @@ const UpdateBlogSchema = joi.object({
   state: joi.string().valid("draft", "published").trim().optional(),
   read_count: joi.number().min(0).optional(),
   reading_time: joi.number().min(0).optional(),
-  tags: joi.string().min(3).max(50).trim().optional(),
+  tag: joi.string().min(3).max(50).trim().optional(),
   body: joi.string().min(10).trim().optional(),
 });
 
@@ -65,7 +65,7 @@ module.exports = {
 "author": "Kelly",
 "state": "draft",
 "read_count": 0,
-"tags": "Sport",
+"tag": "Sport",
 "body": "Yet again Real Madrid came back from the brink to book another UEFA Champions League final"
 }
 */

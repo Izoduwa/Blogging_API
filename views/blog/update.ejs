@@ -1,0 +1,85 @@
+<%- include('../partials/header') %><%- include('../partials/navAuth') %>
+
+<div class="container home-header">
+  <h2>Update Blog Item</h2>
+  <div class="text-end">
+    <p class="greetings">Hi, <%= author %></p>
+    <span><%= email %></span>
+  </div>
+</div>
+<div class="container height-full">
+  <div class="parent">
+    <div class="innerParent">
+      <h3 class="heading">Update any of the following fields</h3>
+      <form action="/update/auth" method="POST">
+        <div class="mb-3">
+          <label htmlFor="title">
+            <strong>Title</strong>
+          </label>
+          <input
+            type="text"
+            name="title"
+            autocomplete="off"
+            value="<%= title %>"
+            class="inputs"
+          />
+        </div>
+        <div class="mb-3">
+          <label htmlFor="description">
+            <strong>Description</strong>
+          </label>
+          <input
+            type="text"
+            name="description"
+            autocomplete="off"
+            value="<%= description %>"
+            class="inputs"
+          />
+        </div>
+        <div class="mb-3">
+          <label htmlFor="tag">
+            <strong>Tag</strong>
+          </label>
+          <input
+            type="text"
+            name="tag"
+            autocomplete="off"
+            value="<%= tag %>"
+            class="inputs"
+          />
+        </div>
+        <% if (state == "draft") { %>
+        <div class="mb-3">
+          <label htmlFor="state">
+            <strong>state</strong>
+          </label>
+          <select id="state" class="select" name="state">
+            <option value="draft" selected disabled>draft</option>
+            <option value="published">published</option>
+          </select>
+        </div>
+        <% } %>
+        <div class="mb-3">
+          <label htmlFor="Body">
+            <strong>body</strong>
+          </label>
+          <textarea name="body" autocomplete="off" class="textarea" rows="10">
+<%= body %></textarea
+          >
+        </div>
+        <div>
+          <input type="hidden" name="email" value="<%= email %>" />
+        </div>
+        <div>
+          <input type="hidden" name="id" value="<%= id %>" />
+        </div>
+        <button class="btn">Update Blog</button>
+        <div class="checkbox">
+          <input type="checkbox" />
+          <label htmlFor="checkbox">Agree with terms & conditions</label>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include('../partials/footer') %>

@@ -105,7 +105,7 @@ All routes, except for user registration, login, published blogs routes and the 
 
 ###### Get All Blogs
 
-- Endpoint: **/api/blog/all**
+- Endpoint: **/api/blog**
 - Method: GET
 - Description: Retrieve all blogs created by the authenticated user.
 - Response:
@@ -121,7 +121,7 @@ All routes, except for user registration, login, published blogs routes and the 
 
 ###### Get All Blogs by State
 
-- Endpoint: **/api/blog/all/{state}**
+- Endpoint: **/api/blog/state/{state}**
 - Method: GET
 - Description: Retrieve all blogs created by the authenticated user, filter with state: **draft/published**.
 - Response:
@@ -137,7 +137,7 @@ All routes, except for user registration, login, published blogs routes and the 
 
 ###### Get a Specific Blog Post
 
-- Endpoint: **/api/blog/item/{id}**
+- Endpoint: **/api/blog/{id}**
 - Method: GET
 - Description: Retrieve a single blog created by the authenticated user by id.
 - Response:

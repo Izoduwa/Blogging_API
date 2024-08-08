@@ -1,0 +1,65 @@
+<%- include('../partials/header') %> <%- include('../partials/nav') %>
+<h1 class="container heading">Sign Up Page</h1>
+<div class="container height-full">
+  <div class="parent">
+    <div class="innerParent">
+      <h2 class="heading">Enter your details</h2>
+      <form action="/register" method="POST">
+        <div class="mb-3">
+          <label htmlFor="first_name">
+            <strong>First Name</strong>
+          </label>
+          <input
+            type="text"
+            name="first_name"
+            autocomplete="off"
+            placeholder="Enter Your First Name"
+            class="inputs"
+          />
+        </div>
+        <div class="mb-3">
+          <label htmlFor="last_name">
+            <strong>Last Name</strong>
+          </label>
+          <input
+            type="text"
+            name="last_name"
+            autocomplete="off"
+            placeholder="Enter Your Last Name"
+            class="inputs"
+          />
+        </div>
+        <div class="mb-3">
+          <label htmlFor="email">
+            <strong>Email</strong>
+          </label>
+          <input
+            type="email"
+            name="email"
+            autocomplete="off"
+            placeholder="Enter Your Email"
+            class="inputs"
+          />
+        </div>
+        <div class="mb-3">
+          <label htmlFor="password">
+            <strong>Password</strong>
+          </label>
+          <input
+            type="password"
+            name="password"
+            autocomplete="off"
+            placeholder="Enter Your Password"
+            class="inputs"
+          />
+        </div>
+        <button class="btn">Sign Up</button>
+        <div class="checkbox">
+          <input type="checkbox" />
+          <label htmlFor="checkbox">Agree with terms & conditions</label>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include('../partials/footer') %>

@@ -1,0 +1,25 @@
+<%- include('../partials/header') %><%- include('../partials/navAuth') %>
+
+<div class="container home-header">
+  <h2>Home</h2>
+  <div class="text-end">
+    <p class="greetings">Welcome, <%= author %></p>
+    <span><%= email %></span>
+  </div>
+</div>
+<div class="container height-full">
+  <div class="height-full">
+    <h3 class="text-centre">List of Blogs Created by You</h3>
+    <% if (blogs.length > 0) { %> <% blogs.forEach(blog => { %>
+    <form action="/blog/auth" method="POST">
+      <input type="hidden" name="email" value="<%= email %>" />
+      <input type="hidden" name="id" value="<%= blog._id %>" />
+      <button class="btn-link"><%= blog.title %></button>
+    </form>
+    <% }) %> <% } else { %>
+    <p>No blogs found.</p>
+    <% } %>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

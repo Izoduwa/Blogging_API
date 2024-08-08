@@ -79,7 +79,7 @@ const getPublishedBlogItems = asyncHandler(async (req, res) => {
         _id: 1,
         title: 1,
         author: 1,
-        tags: 1,
+        tag: 1,
         read_count: 1,
       }
     )
@@ -95,7 +95,7 @@ const getPublishedBlogItems = asyncHandler(async (req, res) => {
 });
 
 // Kelly%20Izoduwa
-//http://[::1]:7000/api/blog/published/items/tags/Movies
+//http://[::1]:7000/api/blog/published/items/tag/Movies
 //http://[::1]:7000/api/blog/published/items/author/kelly izoduwa
 //http://[::1]:7000/api/blog/published/items/title/Moving train
 
@@ -123,7 +123,7 @@ const getPublishedBlogItemsSearch = asyncHandler(async (req, res) => {
         _id: 1,
         title: 1,
         author: 1,
-        tags: 1,
+        tag: 1,
         read_count: 1,
       })
       .skip((page - 1) * pageSize)
@@ -154,9 +154,9 @@ const getBlogById = asyncHandler(async (req, res) => {
   }
 });
 
-function getPublishedBlogById(req, res) {
+const getPublishedBlogById = (req, res) => {
   res.json(req.data);
-}
+};
 
 const addBlogItem = asyncHandler(async (req, res) => {
   const blog = req.body;

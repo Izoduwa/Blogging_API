@@ -1,0 +1,20 @@
+<%- include('partials/header') %><%- include('partials/nav') %>
+
+<div class="container height-full">
+  <div class="blog">
+    <div class="blog-body"><%= body %></div>
+    <div class="blog-details">
+      <p><span class="bold">Title: </span><%= title %></p>
+      <p><span class="bold">Description: </span><%= description %></p>
+      <p><span class="bold">Author: </span><%= author %></p>
+      <p><span class="bold">State: </span><%= state %></p>
+      <p><span class="bold">Read Count: </span><%= read_count %></p>
+      <p><span class="bold">Reading Time: </span><%= reading_time %></p>
+      <p><span class="bold">Tag: </span><%= tag %></p>
+      <p><span class="bold">Date Created: </span><%= createdAt %></p>
+      <p><span class="bold">Date Updated: </span><%= updatedAt %></p>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

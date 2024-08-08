@@ -1,0 +1,40 @@
+<%- include('../partials/header') %><%- include('../partials/navAuth') %>
+
+<div class="container home-header">
+  <h2>Blog Item</h2>
+  <div class="text-end">
+    <p class="greetings">Hi, <%= author %></p>
+    <span><%= email %></span>
+  </div>
+</div>
+<hr />
+<div class="container height-full">
+  <div class="blog">
+    <div class="blog-body"><%= body %></div>
+    <div class="blog-details">
+      <p><span class="bold">Title: </span><%= title %></p>
+      <p><span class="bold">Description: </span><%= description %></p>
+      <p><span class="bold">Author: </span><%= author %></p>
+      <p><span class="bold">State: </span><%= state %></p>
+      <p><span class="bold">Read Count: </span><%= read_count %></p>
+      <p><span class="bold">Reading Time: </span><%= reading_time %></p>
+      <p><span class="bold">Tag: </span><%= tag %></p>
+      <p><span class="bold">Date Created: </span><%= createdAt %></p>
+      <p><span class="bold">Date Updated: </span><%= updatedAt %></p>
+    </div>
+  </div>
+  <div class="blog-buttons">
+    <form action="/update" method="POST">
+      <input type="hidden" name="id" value="<%= id %>" />
+      <input type="hidden" name="email" value="<%= email %>" />
+      <button class="button-blue">Update Blog</button>
+    </form>
+    <form action="/delete/auth" method="POST">
+      <input type="hidden" name="id" value="<%= id %>" />
+      <input type="hidden" name="email" value="<%= email %>" />
+      <button class="button-red">Delete Blog</button>
+    </form>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

@@ -6,9 +6,6 @@ const readCountMiddleware = async (req, res, next) => {
       const id = req.params.id;
       // Find the data in MongoDB by ID
       const data = await blogModel.findById(id);
-      if (!data) {
-        return res.status(404).json({ error: "Data not found" });
-      }
       // Check if status is 'published'
       if (data.state !== "published") {
         return res.status(403).json({ error: "Blog is yet to be published" });
@@ -20,7 +17,7 @@ const readCountMiddleware = async (req, res, next) => {
       req.data = data; // Pass the updated data to the next middleware
       next();
     } catch (error) {
-      res.status(500).json({ error: "Internal server error" });
+      res.status(404).json({ error: "Blog item not found" });
     }
   } else {
     next();

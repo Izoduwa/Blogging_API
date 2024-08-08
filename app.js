@@ -4,6 +4,7 @@ const CONFIG = require("./config/config");
 const ConnectToDb = require("./db/mongodb");
 const blogRouter = require("./routes/blog.routes");
 const userRoutes = require("./routes/user.routes");
+const viewRoutes = require("./routes/view.routes");
 const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
 const logger = require("./logging/logger");
@@ -37,14 +38,7 @@ app.use("/api/blog/published/item/:id", readCountMiddleware);
 
 app.use("/api/blog", blogRouter);
 app.use("/api/user", userRoutes);
-
-// app.get("/", (req, res) => {
-//   res.status(200).send("Home");
-// });
-
-app.get("/", (req, res) => {
-  res.render("index");
-});
+app.use("/", viewRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

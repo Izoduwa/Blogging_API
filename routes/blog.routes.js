@@ -19,8 +19,9 @@ const {
 
 const blogRouter = express.Router();
 
-blogRouter.get("/all", protect, getAllBlogItems);
-blogRouter.get("/all/:state", protect, getAllBlogItemsByStatus);
+blogRouter.get("/", protect, getAllBlogItems);
+blogRouter.get("/:id", protect, getBlogById);
+blogRouter.get("/state/:state", protect, getAllBlogItemsByStatus);
 blogRouter.get("/published/items", getPublishedBlogItems);
 blogRouter.get(
   "/published/items/:fieldname/:search_item",

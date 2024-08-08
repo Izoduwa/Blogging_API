@@ -1,0 +1,75 @@
+<%- include('../partials/header') %><%- include('../partials/navAuth') %>
+
+<div class="container home-header">
+  <h2>Add Blog Item</h2>
+  <div class="text-end">
+    <p class="greetings">Hi, <%= author %></p>
+    <span><%= email %></span>
+  </div>
+</div>
+<div class="container height-full">
+  <div class="parent">
+    <div class="innerParent">
+      <h3 class="heading">Fill the following fields</h3>
+      <form action="/create" method="POST">
+        <div class="mb-3">
+          <label htmlFor="title">
+            <strong>Title</strong>
+          </label>
+          <input
+            type="text"
+            name="title"
+            autocomplete="off"
+            placeholder="Enter Title"
+            class="inputs"
+          />
+        </div>
+        <div class="mb-3">
+          <label htmlFor="description">
+            <strong>Description</strong>
+          </label>
+          <input
+            type="text"
+            name="description"
+            autocomplete="off"
+            placeholder="Enter Description"
+            class="inputs"
+          />
+        </div>
+        <div class="mb-3">
+          <label htmlFor="tag">
+            <strong>Tag</strong>
+          </label>
+          <input
+            type="text"
+            name="tag"
+            autocomplete="off"
+            placeholder="Enter Tag"
+            class="inputs"
+          />
+        </div>
+        <div class="mb-3">
+          <label htmlFor="Body">
+            <strong>body</strong>
+          </label>
+          <textarea
+            name="body"
+            autocomplete="off"
+            placeholder="Enter Body"
+            class="textarea"
+            rows="10"
+          ></textarea>
+        </div>
+        <div>
+          <input type="hidden" name="email" value="<%= email %>" />
+        </div>
+        <button class="btn">Add Blog</button>
+        <div class="checkbox">
+          <input type="checkbox" />
+          <label htmlFor="checkbox">Agree with terms & conditions</label>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include('../partials/footer') %>
