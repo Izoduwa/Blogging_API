@@ -120,12 +120,12 @@ viewRoutes.post(
     });
 
     const blogs = await blogModel.find({ userID: user._id.toString() });
+    const author = user.first_name + " " + user.last_name;
 
     if (user) {
       generateToken(res, user._id);
       res.render("blog/home", {
-        first_name: user.first_name,
-        last_name: user.last_name,
+        author,
         email,
         blogs,
       });
