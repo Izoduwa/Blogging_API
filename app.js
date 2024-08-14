@@ -20,7 +20,7 @@ app.set("views", "views");
 
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["*"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
@@ -44,5 +44,5 @@ app.use(notFound);
 app.use(errorHandler);
 
 app.listen(CONFIG.PORT, () => {
-  logger.info(`Server is running in http://localhost:${CONFIG.PORT}`);
+  logger.info(`Server is running on Port: ${CONFIG.PORT}`);
 });
