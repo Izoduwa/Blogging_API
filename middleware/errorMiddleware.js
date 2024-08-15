@@ -1,7 +1,6 @@
-const logger = require("../logging/logger");
 const notFound = (req, res, next) => {
   const error = new Error(`Not Found - ${req.originalUrl}`);
-  logger.error(error);
+  console.error(error);
   res.status(404);
   next(error);
 };
@@ -15,7 +14,7 @@ const errorHandler = (err, req, res, next) => {
     message = "Resource not found";
   }
 
-  logger.error({
+  console.error({
     message: message,
     stack: process.env.NODE_ENV === "production" ? null : err.stack,
   });

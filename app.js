@@ -7,7 +7,6 @@ const userRoutes = require("./routes/user.routes");
 const viewRoutes = require("./routes/view.routes");
 const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
-const logger = require("./logging/logger");
 const readCountMiddleware = require("./middleware/readCountMiddleware");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
@@ -44,5 +43,5 @@ app.use(notFound);
 app.use(errorHandler);
 
 app.listen(CONFIG.PORT, () => {
-  logger.info(`Server is running on Port: ${CONFIG.PORT}`);
+  console.log(`Server is running on Port: ${CONFIG.PORT}`);
 });
