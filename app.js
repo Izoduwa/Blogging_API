@@ -1,12 +1,14 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
+const favicon = require("serve-favicon");
+const cookieParser = require("cookie-parser");
+const helmet = require("helmet");
 const CONFIG = require("./config/config");
 const ConnectToDb = require("./db/mongodb");
 const blogRouter = require("./routes/blog.routes");
 const userRoutes = require("./routes/user.routes");
 const viewRoutes = require("./routes/view.routes");
-const cookieParser = require("cookie-parser");
-const helmet = require("helmet");
 const readCountMiddleware = require("./middleware/readCountMiddleware");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
@@ -25,6 +27,8 @@ app.use(
   })
 );
 
+app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
+app.use(favicon(path.join(__dirname, "public", "menu.ico")));
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
