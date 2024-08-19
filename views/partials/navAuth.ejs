@@ -1,7 +1,12 @@
 <%- include('header') %>
 <nav class="nav">
-  <div class="nav-header">
-    <span class="nav-header-span">Kizod Blog API</span>
+  <div class="nav-and-menu">
+    <div class="nav-header">
+      <span class="nav-header-span">Kizod Blog API</span>
+    </div>
+    <div class="dropdown-menu-icon">
+      <img src="/menu.ico" alt="Menu Icon"> 
+    </div>
   </div>
   <div class="nav-link-container">
     <form action="/home" method="POST">
@@ -17,3 +22,4 @@
     <a href="/login" class="nav-link"> Logout </a>
   </div>
 </nav>
+<script src="/script.js"></script>
