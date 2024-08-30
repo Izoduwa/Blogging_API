@@ -11,8 +11,8 @@
 <div class="container height-full">
   <div class="blog">
     <div class="blog-body"><%= body %></div>
-    <div class="blog-details">
-      <p><span class="bold">Title: </span><%= title %></p>
+    <div class="blog-details blog-details-invisible">
+      <p class="invisible"><span class="bold">Title: </span><%= title %></p>
       <p><span class="bold">Description: </span><%= description %></p>
       <p><span class="bold">Author: </span><%= author %></p>
       <p><span class="bold">State: </span><%= state %></p>
@@ -21,6 +21,12 @@
       <p><span class="bold">Tag: </span><%= tag %></p>
       <p><span class="bold">Date Created: </span><%= createdAt %></p>
       <p><span class="bold">Date Updated: </span><%= updatedAt %></p>
+    </div>
+    <div class="blog-details-heading">
+      <div><span class="bold">Title: </span><%= title %></div>
+      <div class="">
+        <img src="/down.png" alt="Down Symbol" />
+      </div>
     </div>
   </div>
   <div class="blog-buttons">

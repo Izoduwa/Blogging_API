@@ -6,3 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
     dropdownContent.classList.toggle("show");
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const detailsHeading = document.querySelector(".blog-details-heading");
+  const details = document.querySelector(".blog-details");
+
+  detailsHeading.addEventListener("click", function () {
+    details.classList.toggle("show");
+  });
+});
