@@ -2,7 +2,8 @@ const asyncHandler = require("express-async-handler");
 const blogModel = require("../models/blog");
 
 function readingTime(valueIn) {
-  const value = valueIn.length / 120;
+  const arrValue = valueIn.split(" ");
+  const value = arrValue.length / 120;
   return value.toFixed(0);
 }
 
@@ -176,7 +177,9 @@ const updateBlogItem = asyncHandler(async (req, res) => {
   const id = req.params.id;
   const dbBlog = await blogModel.findById(id);
 
-  const blog = req.body;
+  var blog = req.body;
+
+  blog.reading_time = readingTime(blog.body) + " min read";
 
   const user_id = req.user._id.toString();
   if (user_id === dbBlog.userID) {

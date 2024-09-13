@@ -7,7 +7,8 @@ const blogModel = require("../models/blog");
 const viewRoutes = express.Router();
 
 function readingTime(valueIn) {
-  const value = valueIn.length / 120;
+  const arrValue = valueIn.split(" ");
+  const value = arrValue.length / 120;
   return value.toFixed(0);
 }
 
@@ -281,6 +282,8 @@ viewRoutes.post(
     const name = user.first_name + " " + user.last_name;
 
     blog_.author = name;
+    blog_.reading_time = readingTime(body) + " min read";
+
     const blog__ = await blogModel.findById(id);
 
     if (user._id.toString() == blog__.userID) {
