@@ -10,7 +10,9 @@
 <hr />
 <div class="container height-full">
   <div class="blog">
-    <div class="blog-body"><%= body %></div>
+    <div class="blog-body">
+      <%- body.replace(new RegExp('\n', 'g'), '<br />') %>
+    </div>
     <div class="blog-details blog-details-invisible">
       <p class="invisible"><span class="bold">Title: </span><%= title %></p>
       <p><span class="bold">Description: </span><%= description %></p>
@@ -42,5 +44,4 @@
     </form>
   </div>
 </div>
-
 <%- include('../partials/footer') %>
