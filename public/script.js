@@ -15,11 +15,11 @@ document.addEventListener("DOMContentLoaded", function () {
   detailsHeading.addEventListener("click", function () {
     details.classList.toggle("show");
 
-    if (arroyIcon.src === "http://localhost:7000/down.png") {
-      arroyIcon.src = "http://localhost:7000/up.png";
+    if (arroyIcon.src === "https://kizod-blog-api.onrender.com/down.png") {
+      arroyIcon.src = "https://kizod-blog-api.onrender.com/up.png";
       arroyIcon.alt = "Up Symbol";
     } else {
-      arroyIcon.src = "http://localhost:7000/down.png";
+      arroyIcon.src = "https://kizod-blog-api.onrender.com/down.png";
       arroyIcon.alt = "Down Symbol";
     }
   });
