@@ -14,9 +14,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   detailsHeading.addEventListener("click", function () {
     details.classList.toggle("show");
-    arroyIcon.src =
-      arroyIcon.src === "http://localhost:7000/down.png"
-        ? "http://localhost:7000/up.png"
-        : "http://localhost:7000/down.png";
+
+    if (arroyIcon.src === "http://localhost:7000/down.png") {
+      arroyIcon.src = "http://localhost:7000/up.png";
+      arroyIcon.alt = "Up Symbol";
+    } else {
+      arroyIcon.src = "http://localhost:7000/down.png";
+      arroyIcon.alt = "Down Symbol";
+    }
   });
 });
