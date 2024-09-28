@@ -12,6 +12,15 @@ function readingTime(valueIn) {
   return value.toFixed(0);
 }
 
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1)); // Get random index
+    // Swap elements at indices i and j
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 viewRoutes.get(
   "/",
   asyncHandler(async (req, res) => {
@@ -84,7 +93,16 @@ viewRoutes.post(
 
     const blog = await blogModel.create(blog_);
 
+    const blogs = await blogModel.find({ userID: user._id.toString() });
+
+    // Shuffle the array
+    const shuffledBlogs = shuffleArray(blogs);
+
+    // Get the first 10 items from the shuffled array
+    const randomTenBlogs = shuffledBlogs.slice(0, 10);
+
     res.status(200).render("blog/blog", {
+      randomTenBlogs,
       email: user.email,
       title: blog.title,
       id: blog._id,
@@ -191,7 +209,16 @@ viewRoutes.post(
     const blog = await blogModel.findById(_id);
     blog.read_count++;
     await blog.save();
+    const blogs = await blogModel.find({ state: "published" });
+
+    // Shuffle the array
+    const shuffledBlogs = shuffleArray(blogs);
+
+    // Get the first 10 items from the shuffled array
+    const randomTenBlogs = shuffledBlogs.slice(0, 10);
+
     res.status(200).render("blog", {
+      randomTenBlogs,
       title: blog.title,
       description: blog.description,
       author: blog.author,
@@ -215,8 +242,17 @@ viewRoutes.post(
 
     const blog = await blogModel.findById(id);
 
+    const blogs = await blogModel.find({ userID: user._id.toString() });
+
+    // Shuffle the array
+    const shuffledBlogs = shuffleArray(blogs);
+
+    // Get the first 10 items from the shuffled array
+    const randomTenBlogs = shuffledBlogs.slice(0, 10);
+
     if (user._id.toString() == blog.userID) {
       res.status(200).render("blog/blog", {
+        randomTenBlogs,
         email: email,
         id: blog._id,
         title: blog.title,
@@ -286,9 +322,18 @@ viewRoutes.post(
 
     const blog__ = await blogModel.findById(id);
 
+    const blogs = await blogModel.find({ userID: user._id.toString() });
+
+    // Shuffle the array
+    const shuffledBlogs = shuffleArray(blogs);
+
+    // Get the first 10 items from the shuffled array
+    const randomTenBlogs = shuffledBlogs.slice(0, 10);
+
     if (user._id.toString() == blog__.userID) {
       const blog = await blogModel.findByIdAndUpdate(id, blog_, { new: true });
       res.status(200).render("blog/blog", {
+        randomTenBlogs,
         email: user.email,
         id: blog._id,
         title: blog.title,

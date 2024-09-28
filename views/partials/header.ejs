@@ -225,33 +225,36 @@
         align-items: center;
         justify-content: space-between;
       }
-
       .bold {
         font-weight: 900;
       }
       .blog {
         display: flex;
         margin: 20px 0px;
-        align-items: center;
       }
       .blog-body {
         font-size: large;
-        width: 80%;
+        width: 60%;
         margin-right: 20px;
         text-align: justify;
       }
       .blog-details {
+        width: 20%;
         border-left: black double 5px;
         padding-left: 10px;
         font-size: large;
       }
+      .blog-details-main-heading {
+        text-align: center;
+      }
       .blog-details-heading {
         display: none;
-        font-size: large;
+        font-size: 2em;
       }
       .blog-buttons {
         display: flex;
         width: auto;
+        margin: 20px 0px;
         justify-content: space-around;
         align-items: center;
       }
@@ -262,6 +265,14 @@
         justify-content: space-around;
         align-items: center;
       }
+      .side-blogs {
+        display: block;
+        width: 20%;
+        border-right: black double 5px;
+        margin-right: 20px;
+        min-height: 100vh;
+      }
+
       .button-red {
         background-color: red;
         cursor: pointer;
@@ -348,28 +359,28 @@
       .ms {
         margin-left: 50px;
       }
-      .bd {
-        font-weight: 900;
-      }
       .rounded-circle {
         background-color: #024102;
         color: #ffffff;
         padding: 7px;
         border-radius: 100px;
       }
+
+      @media (max-width: 876px), (min-width: 776px) and (max-width: 868px) {
+        .nav-header-span {
+          font-weight: 700;
+          font-size: 30px;
+        }
+        .nav-link {
+          font-size: 20px;
+          margin: auto 15px;
+        }
+      }
+
       /* Mobile phones (up to 468px) and Medium screens (up to 768px)*/
       @media (max-width: 576px), (min-width: 576px) and (max-width: 768px) {
         .nav {
-          width: auto;
           display: block;
-          align-items: center;
-          justify-content: space-between;
-          padding: 12px 24px;
-        }
-        .nav-header {
-          flex-shrink: 0;
-          color: #243329;
-          margin-right: 1.5rem /* 24px */;
         }
         .nav-header-span {
           font-weight: 700;
@@ -417,13 +428,17 @@
         .blog-details-invisible.show {
           display: block;
         }
+        .blog-details-main-heading {
+          display: none;
+        }
         .blog-details-heading {
-          width: 100%;
-          cursor: pointer;
           display: flex;
+          width: 100%;
+          font-size: 1.5em;
+          cursor: pointer;
           justify-content: space-between;
         }
-        .invisible {
+        .side-blogs {
           display: none;
         }
       }

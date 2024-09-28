@@ -8,13 +8,36 @@
   </div>
 </div>
 <hr />
+
 <div class="container height-full">
+  <h1 class="blog-details-main-heading"><%= title %></h1>
   <div class="blog">
+    <div class="side-blogs">
+      <% if (randomTenBlogs.length > 0) { %> <% randomTenBlogs.forEach(blog => {
+      %>
+      <form action="/blog/auth" method="POST">
+        <input type="hidden" name="email" value="<%= email %>" />
+        <input type="hidden" name="id" value="<%= blog._id %>" />
+        <button class="btn-link"><%= blog.title %></button>
+      </form>
+      <% }) }%>
+    </div>
     <div class="blog-body">
       <%- body.replace(new RegExp('\n', 'g'), '<br />') %>
+      <div class="blog-buttons">
+        <form action="/update" method="POST">
+          <input type="hidden" name="id" value="<%= id %>" />
+          <input type="hidden" name="email" value="<%= email %>" />
+          <button class="button-blue">Update Blog</button>
+        </form>
+        <form action="/delete/auth" method="POST">
+          <input type="hidden" name="id" value="<%= id %>" />
+          <input type="hidden" name="email" value="<%= email %>" />
+          <button class="button-red">Delete Blog</button>
+        </form>
+      </div>
     </div>
     <div class="blog-details blog-details-invisible">
-      <p class="invisible"><span class="bold">Title: </span><%= title %></p>
       <p><span class="bold">Description: </span><%= description %></p>
       <p><span class="bold">Author: </span><%= author %></p>
       <p><span class="bold">State: </span><%= state %></p>
@@ -25,23 +48,11 @@
       <p><span class="bold">Date Updated: </span><%= updatedAt %></p>
     </div>
     <div class="blog-details-heading">
-      <div><span class="bold">Title: </span><%= title %></div>
-      <div class="">
-        <img src="/down.png" alt="Down Symbol" />
+      <div><span class="bold"><%= title %></span></div>
+      <div>
+        <img class="arrow-icon" src="/down.png" alt="Down Symbol" />
       </div>
     </div>
-  </div>
-  <div class="blog-buttons">
-    <form action="/update" method="POST">
-      <input type="hidden" name="id" value="<%= id %>" />
-      <input type="hidden" name="email" value="<%= email %>" />
-      <button class="button-blue">Update Blog</button>
-    </form>
-    <form action="/delete/auth" method="POST">
-      <input type="hidden" name="id" value="<%= id %>" />
-      <input type="hidden" name="email" value="<%= email %>" />
-      <button class="button-red">Delete Blog</button>
-    </form>
   </div>
 </div>
 <%- include('../partials/footer') %>

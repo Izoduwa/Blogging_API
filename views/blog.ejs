@@ -1,12 +1,21 @@
 <%- include('partials/header') %><%- include('partials/nav') %>
 
 <div class="container height-full">
+  <h2 class="blog-details-main-heading"><%= title %></h2>
   <div class="blog">
+    <div class="side-blogs">
+      <% if (randomTenBlogs.length > 0) { %> <% randomTenBlogs.forEach(blog => {
+      %>
+      <form action="/blog" method="POST">
+        <input type="hidden" name="_id" value="<%= blog._id %>" />
+        <button class="btn-link"><%= blog.title %></button>
+      </form>
+      <% }) }%>
+    </div>
     <div class="blog-body">
       <%- body.replace(new RegExp('\n', 'g'), '<br />') %>
     </div>
     <div class="blog-details blog-details-invisible">
-      <p class="invisible"><span class="bold">Title: </span><%= title %></p>
       <p><span class="bold">Description: </span><%= description %></p>
       <p><span class="bold">Author: </span><%= author %></p>
       <p><span class="bold">State: </span><%= state %></p>
@@ -17,9 +26,9 @@
       <p><span class="bold">Date Updated: </span><%= updatedAt %></p>
     </div>
     <div class="blog-details-heading">
-      <div><span class="bold">Title: </span><%= title %></div>
-      <div class="">
-        <img src="/down.png" alt="Down Symbol" />
+      <div><span class="bold"><%= title %></span></div>
+      <div>
+        <img class="arrow-icon" src="/down.png" alt="Down Symbol" />
       </div>
     </div>
   </div>
