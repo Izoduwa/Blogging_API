@@ -24,7 +24,9 @@ function shuffleArray(array) {
 viewRoutes.get(
   "/",
   asyncHandler(async (req, res) => {
-    const blogs = await blogModel.find({ state: "published" });
+    const blogs = await blogModel
+      .find({ state: "published" })
+      .sort({ updatedAt: -1 });
 
     res.render("index", {
       blogs,
@@ -138,7 +140,9 @@ viewRoutes.post(
       password,
     });
 
-    const blogs = await blogModel.find({ userID: user._id.toString() });
+    const blogs = await blogModel
+      .find({ userID: user._id.toString() })
+      .sort({ updatedAt: -1 });
     const author = user.first_name + " " + user.last_name;
 
     if (user) {
@@ -165,7 +169,9 @@ viewRoutes.post(
     if (user && (await user.matchPassword(password))) {
       generateToken(res, user._id);
 
-      const blogs = await blogModel.find({ userID: user._id.toString() });
+      const blogs = await blogModel
+        .find({ userID: user._id.toString() })
+        .sort({ updatedAt: -1 });
       const author = user.first_name + " " + user.last_name;
       res.render("blog/home", {
         author,
@@ -187,7 +193,9 @@ viewRoutes.post(
     const user = await User.findOne({ email });
 
     if (user) {
-      const blogs = await blogModel.find({ userID: user._id.toString() });
+      const blogs = await blogModel
+        .find({ userID: user._id.toString() })
+        .sort({ updatedAt: -1 });
       const author = user.first_name + " " + user.last_name;
       res.render("blog/home", {
         author,
@@ -394,7 +402,9 @@ viewRoutes.post(
 
     if (user._id.toString() == blog.userID) {
       await blogModel.findByIdAndDelete(id);
-      const blogs = await blogModel.find({ userID: user._id.toString() });
+      const blogs = await blogModel
+        .find({ userID: user._id.toString() })
+        .sort({ updatedAt: -1 });
       res.status(200).render("blog/home", {
         author: blog.author,
         email,

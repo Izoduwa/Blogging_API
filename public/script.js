@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
   detailsHeading.addEventListener("click", function () {
     details.classList.toggle("show");
 
+    // https://kizod-blog-api.onrender.com/up.png ||/down.png
+
     if (arroyIcon.src === "https://kizod-blog-api.onrender.com/down.png") {
       arroyIcon.src = "https://kizod-blog-api.onrender.com/up.png";
       arroyIcon.alt = "Up Symbol";
